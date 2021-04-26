@@ -1,3 +1,6 @@
+import React from "react";
+import employees from "./employees.json"
+
 import logo from './logo.svg';
 import './App.css';
 
