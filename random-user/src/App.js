@@ -1,4 +1,5 @@
 import React from "react";
+import Form from "./components/Form"
 import Table from "./components/Table"
 
 // import logo from './logo.svg';
@@ -6,7 +7,10 @@ import Table from "./components/Table"
 
 function App() {
   return (
-    <Table />
+    <>
+      <Form />
+      <Table />
+    </>
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />
