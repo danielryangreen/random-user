@@ -1,13 +1,12 @@
 import React from "react";
 import Table from "./components/Table"
-import employees from "./employees.json"
 
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
   return (
-    <Table employees={employees} />
+    <Table />
     // <div className="App">
     //   <header className="App-header">
     //     <img src={logo} className="App-logo" alt="logo" />
