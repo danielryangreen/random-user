@@ -1,21 +1,28 @@
 import React, { Component } from "react";
-import employees from "../employees.json";
+// import employees from "../employees.json";
+import API from "../utils/API";
 
 class Table extends Component {
   state = {
-    employees
+    randomUsers: []
   };
+
+  componentDidMount() {
+    API.getRandomUsers()
+      .then(res => this.setState({ randomUsers: res.data.results }))
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
       <table>
-        {this.state.employees.map(employee => (
+        {this.state.randomUsers.map(employee => (
           <tbody>
             <tr>
-              <td>{employee.results[0].gender}</td>
-              <td>{employee.results[0].name.title}</td>
-              <td>{employee.results[0].name.first}</td>
-              <td>{employee.results[0].name.last}</td>
+              <td>{employee.gender}</td>
+              <td>{employee.name.title}</td>
+              <td>{employee.name.first}</td>
+              <td>{employee.name.last}</td>
             </tr>
           </tbody>
         ))}
