@@ -1,67 +1,39 @@
-import React, { Component } from "react";
+import React from "react";
 
-class Form extends Component {
-  state = {
-    firstName: "",
-    lastName: "",
-    city: "",
-    state: ""
-  };
-
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    this.setState({
-      firstName: "",
-      lastName: "",
-      city: "",
-      state: ""
-    });
-  };
-
-  render() {
-    return (
-      <div>
-        <form>
-          <input
-            value={this.state.firstName}
-            name="firstName"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="First Name"
-          />
-          <input
-            value={this.state.lastName}
-            name="lastName"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="Last Name"
-          />
-          <input
-            value={this.state.city}
-            name="city"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="City"
-          />
-          <input
-            value={this.state.state}
-            name="state"
-            onChange={this.handleInputChange}
-            type="text"
-            placeholder="State"
-          />
-          <button onClick={this.handleFormSubmit}>Submit</button>
-        </form>
-      </div>
-    );
-  }
+function Form(props) {
+  return (
+    <form>
+      <input
+        value={props.nameFirst}
+        name="nameFirst"
+        onChange={props.handleInputChange}
+        type="text"
+        placeholder="First Name"
+      />
+      <input
+        value={props.nameLast}
+        name="nameLast"
+        onChange={props.handleInputChange}
+        type="text"
+        placeholder="Last Name"
+      />
+      <input
+        value={props.locationCity}
+        name="locationCity"
+        onChange={props.handleInputChange}
+        type="text"
+        placeholder="City"
+      />
+      <input
+        value={props.locationState}
+        name="locationState"
+        onChange={props.handleInputChange}
+        type="text"
+        placeholder="State"
+      />
+      <button onClick={props.handleFormSubmit}>Submit</button>
+    </form>
+  );
 }
 
 export default Form;
