@@ -30,8 +30,16 @@ class Container extends Component {
     });
   };
 
+  filterNameLast = input => {
+    const randomUsers = this.state.randomUsers.filter(user => user.name.last === input);
+    this.setState({ randomUsers });
+  };
+
   handleFormSubmit = event => {
     event.preventDefault();
+    if (this.state.nameLast) {
+      this.filterNameLast(this.state.nameLast);
+    }
     this.setState({
       nameFirst: "",
       nameLast: "",
