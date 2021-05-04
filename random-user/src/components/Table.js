@@ -4,7 +4,7 @@ function Table(props) {
   return (
     <table>
       <tbody>
-        {props.randomUsers.map(employee => (
+        {props.filteredUsers.map(employee => (
           <tr>
             <td><img alt="employee headshot" src={employee.picture.thumbnail} /></td>
             <td>{employee.name.title}</td>
