@@ -26,16 +26,8 @@ class Container extends Component {
       .catch(err => console.log(err));
   };
 
-  handleInputChange = event => {
-    const name = event.target.name;
-    const value = event.target.value;
-    this.setState({
-      [name]: value
-    });
-  };
-
   sortNameFirst = () => {
-    const sortedUsers = this.state.randomUsers.sort(function(a, b) {
+    const sortedUsers = this.state.filteredUsers.sort(function(a, b) {
       var x = a.name.first.toLowerCase();
       var y = b.name.first.toLowerCase();
       if (x < y) {return -1;}
@@ -44,9 +36,9 @@ class Container extends Component {
     });
     this.setState({ filteredUsers: sortedUsers });
   };
-
+  
   sortNameLast = () => {
-    const sortedUsers = this.state.randomUsers.sort(function(a, b) {
+    const sortedUsers = this.state.filteredUsers.sort(function(a, b) {
       var x = a.name.last.toLowerCase();
       var y = b.name.last.toLowerCase();
       if (x < y) {return -1;}
@@ -55,9 +47,9 @@ class Container extends Component {
     });
     this.setState({ filteredUsers: sortedUsers });
   };
-
+  
   sortLocationCity = () => {
-    const sortedUsers = this.state.randomUsers.sort(function(a, b) {
+    const sortedUsers = this.state.filteredUsers.sort(function(a, b) {
       var x = a.location.city.toLowerCase();
       var y = b.location.city.toLowerCase();
       if (x < y) {return -1;}
@@ -66,9 +58,9 @@ class Container extends Component {
     });
     this.setState({ filteredUsers: sortedUsers });
   };
-
+  
   sortLocationState = () => {
-    const sortedUsers = this.state.randomUsers.sort(function(a, b) {
+    const sortedUsers = this.state.filteredUsers.sort(function(a, b) {
       var x = a.location.state.toLowerCase();
       var y = b.location.state.toLowerCase();
       if (x < y) {return -1;}
@@ -77,16 +69,48 @@ class Container extends Component {
     });
     this.setState({ filteredUsers: sortedUsers });
   };
+  
+  handleInputChange = event => {
+    const name = event.target.name;
+    const value = event.target.value;
+    this.setState({
+      [name]: value
+    });
+  };
+
+  filterNameFirst = input => {
+    const filteredUsers = this.state.randomUsers.filter(user => user.name.first.toLowerCase() === input.toLowerCase());
+    this.setState({ filteredUsers });
+  };
 
   filterNameLast = input => {
-    const filteredUsers = this.state.randomUsers.filter(user => user.name.last === input);
+    const filteredUsers = this.state.randomUsers.filter(user => user.name.last.toLowerCase() === input.toLowerCase());
+    this.setState({ filteredUsers });
+  };
+
+  filterLocationCity = input => {
+    const filteredUsers = this.state.randomUsers.filter(user => user.location.city.toLowerCase() === input.toLowerCase());
+    this.setState({ filteredUsers });
+  };
+
+  filterLocationState = input => {
+    const filteredUsers = this.state.randomUsers.filter(user => user.location.state.toLowerCase() === input.toLowerCase());
     this.setState({ filteredUsers });
   };
 
   handleFormSubmit = event => {
     event.preventDefault();
+    if (this.state.nameFirst) {
+      this.filterNameFirst(this.state.nameFirst);
+    }
     if (this.state.nameLast) {
       this.filterNameLast(this.state.nameLast);
+    }
+    if (this.state.locationCity) {
+      this.filterLocationCity(this.state.locationCity);
+    }
+    if (this.state.locationState) {
+      this.filterLocationState(this.state.locationState);
     }
     this.setState({
       nameFirst: "",
