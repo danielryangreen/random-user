@@ -122,7 +122,10 @@ class Container extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-fluid">
+        <div className="jumbotron">
+          <h1 className="display-4">Employee Directory</h1>
+        </div>
         <Form
           sortNameFirst={this.sortNameFirst}
           sortNameLast={this.sortNameLast}
