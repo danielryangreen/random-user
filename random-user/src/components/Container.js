@@ -120,6 +120,12 @@ class Container extends Component {
     });
   };
 
+  clearFilter = event => {
+    event.preventDefault();
+    const filteredUsers = this.state.randomUsers;
+    this.setState({ filteredUsers });
+  }
+
   render() {
     return (
       <div className="container-fluid">
@@ -137,6 +143,7 @@ class Container extends Component {
           locationState={this.state.locationState}
           handleInputChange={this.handleInputChange}
           handleFormSubmit={this.handleFormSubmit}
+          clearFilter={this.clearFilter}
         />
         <Table
           filteredUsers={this.state.filteredUsers}

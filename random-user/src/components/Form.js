@@ -56,9 +56,12 @@ function Form(props) {
         <div className="col-auto">
           <button type="submit" className="btn btn-primary" onClick={props.handleFormSubmit}>Filter</button>
         </div>
+        <div className="col-auto">
+        <button type="button" className="btn btn-danger" onClick={props.clearFilter}>Clear</button>
+        </div>
       </form>
       <h4>Sort by:</h4>
-      <div className="btn-group mb-5" role="group" aria-label="sort buttons">
+      <div className="btn-group mb-4" role="group" aria-label="sort buttons">
         <button type="button" className="btn btn-outline-primary" onClick={props.sortNameFirst}>First</button>
         <button type="button" className="btn btn-outline-primary" onClick={props.sortNameLast}>Last</button>
         <button type="button" className="btn btn-outline-primary" onClick={props.sortLocationCity}>City</button>
